@@ -19,6 +19,7 @@ local default_config = {
 ---@type CutlassConfig
 local config = vim.deepcopy(default_config)
 
+
 --- Check if a mapping can be created
 ---@param mode string The mode for the mapping
 ---@param lhs string The left-hand side of the mapping
@@ -47,6 +48,7 @@ end
 local function redirect_to_register(mode, lhs, reg)
     create_mapping(mode, lhs, '"' .. reg .. lhs)
 end
+
 
 --- Override change mappings
 local function override_change_mappings()
@@ -115,13 +117,12 @@ end
 
 --- Create cut mappings
 function M.create_cut_mappings()
-    if config.cut then
-        create_mapping('n', config.cut, 'd')
-        create_mapping('x', config.cut, 'd')
-        create_mapping('n', config.cut .. config.cut, 'dd')
-        create_mapping('n', string.upper(config.cut), 'D')
-    end
+    create_mapping('n', config.cut, 'd')
+    create_mapping('x', config.cut, 'd')
+    create_mapping('n', config.cut .. config.cut, 'dd')
+    create_mapping('n', string.upper(config.cut), 'D')
 end
+
 
 --- Setup the plugin with user configuration
 ---@param user_config CutlassConfig|nil User configuration

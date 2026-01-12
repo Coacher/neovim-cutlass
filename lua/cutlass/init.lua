@@ -1,11 +1,11 @@
 local M = {}
 
---- Default configuration for the plugin
+--- Configuration for the plugin
 ---@class CutlassConfig
 ---@field cut string|nil The key to use for the cut operation
 ---@field exclude string[] List of mappings to exclude from being overridden
 ---@field registers table<string, string> Registers to use for change, delete, and select operations
-local default_config = {
+local config = {
     cut = nil,
     exclude = {},
     registers = {
@@ -14,10 +14,6 @@ local default_config = {
         select = '_',
     },
 }
-
---- Current configuration for the plugin
----@type CutlassConfig
-local config = vim.deepcopy(default_config)
 
 
 --- Check if a mapping can be created
@@ -127,9 +123,7 @@ end
 --- Setup the plugin with user configuration
 ---@param user_config CutlassConfig|nil User configuration
 function M.setup(user_config)
-    if user_config then
-        config = vim.tbl_deep_extend('force', default_config, user_config)
-    end
+    config = vim.tbl_deep_extend('force', config, user_config or {})
 
     M.override_default_mappings()
 

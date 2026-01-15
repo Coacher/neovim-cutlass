@@ -4,6 +4,8 @@ neovim-cutlass
 This Neovim plugin redirects the delete operations to the black hole register
 and provides a convenient way to create a new mapping for the cut operation.
 
+See also [neovim-buckler](https://github.com/Coacher/neovim-buckler).
+
 Related plugins
 ===============
 

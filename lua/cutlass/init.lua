@@ -158,7 +158,7 @@ function M._restore_put_registers()
             vim.fn.setreg(name, info)
         end
     end
-    vim.fn.setreg('"', { points_to = put_registers['"'].points_to })
+    vim.fn.setreg('"', { points_to = put_registers['"'].points_to or '0' })
     if put_replaced then
         vim.fn.setreg(config.registers.put, put_replaced)
     end

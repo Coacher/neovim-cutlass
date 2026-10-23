@@ -56,15 +56,19 @@ local function override_change_mappings()
         end
     end
 
-    for _, lhs in ipairs({ 'cc' }) do
-        if can_map('n', lhs) then
-            redirect_to_register('n', lhs, config.registers.change)
+    for _, mode in ipairs({ 'n' }) do
+        for _, lhs in ipairs({ 'cc' }) do
+            if can_map(mode, lhs) then
+                redirect_to_register(mode, lhs, config.registers.change)
+            end
         end
     end
 
-    for _, lhs in ipairs({ 'R' }) do
-        if can_map('x', lhs) then
-            redirect_to_register('x', lhs, config.registers.change)
+    for _, mode in ipairs({ 'x' }) do
+        for _, lhs in ipairs({ 'R' }) do
+            if can_map(mode, lhs) then
+                redirect_to_register(mode, lhs, config.registers.change)
+            end
         end
     end
 end
@@ -79,9 +83,11 @@ local function override_delete_mappings()
         end
     end
 
-    for _, lhs in ipairs({ 'dd' }) do
-        if can_map('n', lhs) then
-            redirect_to_register('n', lhs, config.registers.delete)
+    for _, mode in ipairs({ 'n' }) do
+        for _, lhs in ipairs({ 'dd' }) do
+            if can_map(mode, lhs) then
+                redirect_to_register(mode, lhs, config.registers.delete)
+            end
         end
     end
 end
